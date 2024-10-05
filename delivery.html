@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Tracking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #28a745;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .vehicle {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .vehicle img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* Circular image */
+            margin-right: 20px;
+        }
+
+        .vehicle-info {
+            flex-grow: 1;
+        }
+
+        .vehicle-info h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .vehicle-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .status {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .status-message {
+            font-size: 18px;
+            color: #333;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Track Your Delivery</h1>
+
+    <div class="container">
+
+        <!-- Delivery Vehicle 1 -->
+        <div class="vehicle">
+            <img src="vtruck 1.jpeg" alt="Vehicle 1">
+            <div class="vehicle-info">
+                <h3>Delivery TRUCK 1</h3>
+                <p>Estimated Delivery Time: 10:30 AM</p>
+            </div>
+        </div>
+
+        <!-- Delivery Vehicle 2 -->
+        <div class="vehicle">
+            <img src="truck 2.jpeg" alt="Vehicle 2">
+            <div class="vehicle-info">
+                <h3>Delivery TRUCK 2</h3>
+                <p>Estimated Delivery Time: 12:00 PM</p>
+            </div>
+        </div>
+
+        <!-- Delivery Vehicle 3 -->
+        <div class="vehicle">
+            <img src="truck 3.jpeg" alt="Vehicle 3">
+            <div class="vehicle-info">
+                <h3>Delivery TRUCK 3</h3>
+                <p>Estimated Delivery Time: 2:15 PM</p>
+            </div>
+        </div>
+
+        <!-- Delivery Vehicle 4 -->
+        <div class="vehicle">
+            <img src="truck 4.jpeg" alt="Vehicle 4">
+            <div class="vehicle-info">
+                <h3>Delivery Truck 4</h3>
+                <p>Estimated Delivery Time: 4:45 PM</p>
+            </div>
+        </div>
+
+        <!-- Delivery Status -->
+        <div class="status">
+            <button onclick="trackDelivery()">Track Delivery</button>
+            <div class="status-message" id="status-message">Status: Not yet started</div>
+        </div>
+    </div>
+
+    <script>
+        let status = 0;
+        const statusMessages = [
+            "Status: Not yet started",
+            "Status: Out for delivery",
+            "Status:pending",
+            "Status: Nearing destination",
+            "Status: Delivered"
+        ];
+
+        function trackDelivery() {
+            status = (status + 1) % statusMessages.length; // Rotate through status messages
+            document.getElementById('status-message').innerText = statusMessages[status];
+        }
+    </script>
+
+</body>
+</html>

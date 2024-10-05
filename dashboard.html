@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #28a745;
+        }
+
+        .welcome-message {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100px;
+            margin: 30px auto;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="welcome-message">
+        <p>You've successfully logged in!</p>
+    </div>
+
+    <button onclick="logout()">Log Out</button>
+
+    <script>
+        function logout() {
+            // Log out by redirecting back to the Sign In page
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>

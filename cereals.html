@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart with us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .product {
+            display: inline-block;
+            width: 200px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .product img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular images */
+        }
+
+        .cart-items {
+            margin-top: 20px;
+        }
+
+        .cart-items table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-items th, .cart-items td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .checkout-form {
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .checkout-form h2 {
+            text-align: center;
+        }
+
+        button {
+            padding: 8px 15px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        button.remove {
+            background-color: #dc3545;
+        }
+        a{ text-align: center;
+            color: skyblue;
+            padding-left: 600px;
+            font-size: 30px;
+            font-family: algerian;
+            
+            
+
+        }
+    </style>
+</head>
+<body><A href="register.html">JOIN US</A> 
+    <a href="index.html">home</a>
+
+    <h1>Shopping  with us</h1>
+    
+    <!-- Product List -->
+   
+
+    <div class="product">
+        <img src="cereals.jpeg" alt="Product 3">
+        <p>cereals</p>
+        <p>Price: KES 700</p>
+        <button onclick="addToCart('Product 3', 2000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="ghost cereals.jpeg" alt="Product 1">
+        <p>ghost</p>
+        <p>Price: KES 500</p>
+        <button onclick="addToCart('Product 1', 1000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="lion.jpeg" alt="Product 2">
+        <p>lions</p>
+        <p>Price: KES 500</p>
+        <button onclick="addToCart('Product 2', 1500)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="sweet.jpeg" alt="Product 3">
+        <p>sweets</p>
+        <p>Price: KES 200</p>
+        <button onclick="addToCart('Product 3', 2000)">Add to Cart</button>
+    </div>
+    <div class="product">
+        <img src="jelys.jpeg" alt="Product 1">
+        <p>jelys</p>
+        <p>Price: KES 100</p>
+        <button onclick="addToCart('Product 1', 1000)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="chocolates.jpeg" alt="Product 2">
+        <p>chocolates</p>
+        <p>Price: KES 150</p>
+        <button onclick="addToCart('Product 2', 1500)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="ghost cereals.jpeg" alt="Product 3">
+        <p>ghost</p>
+        <p>Price: KES 200</p>
+        <button onclick="addToCart('Product 3', 2000)">Add to Cart</button>
+    </div>
+
+    
+    <div class="cart-items">
+        <h2>Cart</h2>
+        <table id="cart-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Price (KES)</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody id="cart-body">
+                <!-- Items will be added here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Checkout Form -->
+    <div class="checkout-form">
+        <h2>Checkout</h2>
+        <p>Total: <span id="total-price">0</span> KES</p>
+
+        <h3>M-Pesa Payment Options</h3>
+        <div>
+            <h4>1. Send Money</h4>
+            <p>Send the total amount to <strong>0790834781</strong>.</p>
+        </div>
+
+        <div>
+            <h4>2. PayBill</h4>
+            <p>Business Number: <strong>123456</strong></p>
+            <p>Account Number: <strong>Your Name or Order ID</strong></p>
+        </div>
+
+        <button onclick="checkout()">Submit Payment</button>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(itemName, price) {
+            // Add item to the cart array
+            cart.push({ name: itemName, price: price });
+
+            // Update total price
+            total += price;
+            document.getElementById('total-price').innerText = total;
+
+            // Display the cart
+            updateCart();
+        }
+
+        function removeFromCart(index) {
+            // Remove item from the cart array
+            total -= cart[index].price; // Subtract from total
+            cart.splice(index, 1); // Remove the item
+
+            // Update total price
+            document.getElementById('total-price').innerText = total;
+
+            // Display the cart
+            updateCart();
+        }
+
+        function updateCart() {
+            // Get cart table body
+            const cartBody = document.getElementById('cart-body');
+            cartBody.innerHTML = ''; // Clear existing rows
+
+            // Add each item to the cart table
+            cart.forEach((item, index) => {
+                const row = `<tr>
+                                <td>${item.name}</td>
+                                <td>${item.price}</td>
+                                <td><button class="remove" onclick="removeFromCart(${index})">Remove</button></td>
+                            </tr>`;
+                cartBody.innerHTML += row;
+            });
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+
+            alert('Please proceed with M-Pesa payment using Send Money or PayBill.');
+        }
+    </script>
+
+</body>
+</html>

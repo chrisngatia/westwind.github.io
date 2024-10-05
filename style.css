@@ -1,0 +1,51 @@
+#style.css
+body {
+    font-family: Arial, sans-serif;
+    margin:100px;
+    padding: 50px;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.logo img {
+    width: 150px; /* Adjust logo size */
+}
+
+main {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    text-align: center;
+}
+
+.circular-image {
+    width: 150px; /* Set width */
+    height: 150px; /* Set height */
+    overflow: hidden;
+    border-radius: 50%; /* Makes the image circular */
+    margin: 0 auto 10px; /* Center the image */
+}
+
+.circular-image img {
+    width: 100%; /* Ensures the image covers the container */
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes extra space below the image */
+}
